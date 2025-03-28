@@ -22,7 +22,7 @@
 ### 安装
 
 ```bash
-git clone https://github.com/yourusername/verdant.git
+git clone https://github.com/Lcyys666/Static-blogging-system.git
 cd verdant
 npm install
 ```
