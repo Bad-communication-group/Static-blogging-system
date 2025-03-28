@@ -4,6 +4,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)
+
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Lcyys666&repo=Static-blogging-system)](https://github.com/Lcyys666/Static-blogging-system)
 
 ## 特性
