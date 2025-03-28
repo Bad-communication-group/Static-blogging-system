@@ -1,4 +1,4 @@
-# Verdant
+# Static-blogging-system
 
 一个优雅的、支持 Markdown 的静态博客系统。
 
