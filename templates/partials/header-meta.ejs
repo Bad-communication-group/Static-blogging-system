@@ -1,0 +1,63 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="<%= config.site.url %>/css/style.css">
+<link rel="stylesheet" href="/lib/highlight.js/styles.css">
+<script src="/lib/highlight.js/highlight.min.js"></script>
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+    },
+    svg: {
+        fontCache: 'global'
+    },
+    options: {
+        renderActions: {
+            findScript: [10, function (doc) {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(function(node) {
+                    const display = !!node.type.match(/; *mode=display/);
+                    const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                    const text = document.createTextNode('');
+                    node.parentNode.replaceChild(text, node);
+                    math.start = {node: text, delim: '', n: 0};
+                    math.end = {node: text, delim: '', n: 0};
+                    doc.math.push(math);
+                });
+            }, '']
+        }
+    }
+};
+</script>
+<script src="/lib/mathjax/tex-mml-chtml.js"></script>
+<script>
+// 代码复制功能
+function copyCode(button) {
+    const pre = button.parentElement.nextElementSibling;
+    const code = pre.querySelector('code');
+    const text = code.innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = button.innerText;
+        button.innerText = '已复制！';
+        button.classList.add('copied');
+        
+        setTimeout(() => {
+            button.innerText = originalText;
+            button.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        console.error('复制失败:', err);
+        button.innerText = '复制失败';
+        button.classList.add('error');
+        
+        setTimeout(() => {
+            button.innerText = '复制';
+            button.classList.remove('error');
+        }, 2000);
+    });
+}
+</script> 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="<%= config.site.language %>">
+<head>
+    <title><%= post.title %> - <%= config.site.title %></title>
+    <%- include('partials/header-meta') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container">
+        <main>
+            <article class="post-content">
+                <header>
+                    <h1><%= post.title %></h1>
+                    <div class="post-meta">
+                        <time><%= post.date %></time>
+                        <% if (post.categories && post.categories.length > 0) { %>
+                            <span>分类：<%= post.categories.join(', ') %></span>
+                        <% } %>
+                        <% if (post.tags && post.tags.length > 0) { %>
+                            <span>标签：<%= post.tags.join(', ') %></span>
+                        <% } %>
+                    </div>
+                </header>
+                <div class="post-body">
+                    <%- post.content %>
+                </div>
+            </article>
+        </main>
+
+        <aside class="sidebar">
+            <div class="about-widget">
+                <h3>关于我</h3>
+                <p><%= config.site.description %></p>
+            </div>
+            <div class="social-widget">
+                <h3>社交媒体</h3>
+                <div class="social-links">
+                    <% if (config.site.social && config.site.social.github) { %>
+                        <a href="<%= config.site.social.github %>" target="_blank">GitHub</a>
+                    <% } %>
+                    <% if (config.site.social && config.site.social.twitter) { %>
+                        <a href="<%= config.site.social.twitter %>" target="_blank">Twitter</a>
+                    <% } %>
+                    <% if (config.site.social && config.site.social.email) { %>
+                        <a href="mailto:<%= config.site.social.email %>">Email</a>
+                    <% } %>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html> 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="<%= config.site.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签：<%= tag %> - <%= config.site.title %></title>
+    <link rel="stylesheet" href="<%= config.site.url %>/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container">
+        <main>
+            <section class="posts-section">
+                <h2>标签：<%= tag %></h2>
+                <div class="posts-grid">
+                    <% posts.forEach(post => { %>
+                        <article class="post-card">
+                            <h3><a href="<%= config.site.url %>/posts/<%= post.slug %>"><%= post.title %></a></h3>
+                            <div class="post-meta">
+                                <time><%= post.date %></time>
+                                <% if (post.categories && post.categories.length > 0) { %>
+                                    <span>分类：<%= post.categories.join(', ') %></span>
+                                <% } %>
+                            </div>
+                            <div class="post-excerpt">
+                                <%- post.excerpt %>
+                            </div>
+                            <a href="<%= config.site.url %>/posts/<%= post.slug %>" class="read-more">阅读更多</a>
+                        </article>
+                    <% }) %>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="about-widget">
+                <h3>关于我</h3>
+                <p><%= config.site.description %></p>
+            </div>
+            <div class="social-widget">
+                <h3>社交媒体</h3>
+                <div class="social-links">
+                    <% if (config.site.social && config.site.social.github) { %>
+                        <a href="<%= config.site.social.github %>" target="_blank">GitHub</a>
+                    <% } %>
+                    <% if (config.site.social && config.site.social.twitter) { %>
+                        <a href="<%= config.site.social.twitter %>" target="_blank">Twitter</a>
+                    <% } %>
+                    <% if (config.site.social && config.site.social.email) { %>
+                        <a href="mailto:<%= config.site.social.email %>">Email</a>
+                    <% } %>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html> 

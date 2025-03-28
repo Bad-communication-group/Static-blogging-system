@@ -1,0 +1,20 @@
+site:
+  title: "我的博客"
+  description: "这是一个使用 Node.js 构建的静态博客"
+  author: "博主"
+  language: "zh-CN"
+  url: "http://localhost:3000"
+  social:
+    github: "https://github.com/yourusername"
+
+nav:
+  - name: "首页"
+    url: "/"
+  - name: "关于"
+    url: "/about"
+  - name: "联系"
+    url: "/contact"
+
+social:
+  - name: GitHub
+    url: https://github.com/yourusername

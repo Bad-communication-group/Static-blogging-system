@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="<%= config.site.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章列表 - <%= config.site.title %></title>
+    <link rel="stylesheet" href="<%= config.site.url %>/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand"><%= config.site.title %></div>
+        <ul class="nav-links">
+            <% config.nav.forEach(function(item) { %>
+                <li><a href="<%= config.site.url + item.url %>" class="<%= item.url === '/posts' ? 'active' : '' %>"><%= item.name %></a></li>
+            <% }); %>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="posts-header">
+            <h1>所有文章</h1>
+            <p>共 <%= posts.length %> 篇文章</p>
+        </section>
+
+        <section class="posts-list">
+            <% posts.forEach(function(post) { %>
+                <article class="post-card">
+                    <div class="post-meta">
+                        <time><%= post.date.toLocaleDateString() %></time>
+                        <% if (post.categories) { %>
+                            <div class="categories">
+                                <% post.categories.forEach(function(category) { %>
+                                    <a href="<%= config.site.url %>/categories/<%= category %>" class="category"><%= category %></a>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                        <% if (post.tags) { %>
+                            <div class="tags">
+                                <% post.tags.forEach(function(tag) { %>
+                                    <a href="<%= config.site.url %>/tags/<%= tag %>" class="tag"><%= tag %></a>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                    </div>
+                    <h2><a href="<%= config.site.url %>/posts/<%= post.slug %>"><%= post.title %></a></h2>
+                    <p><%= post.excerpt || post.content.substring(0, 150) + '...' %></p>
+                    <a href="<%= config.site.url %>/posts/<%= post.slug %>" class="read-more">阅读更多</a>
+                </article>
+            <% }); %>
+        </section>
+
+        <aside class="sidebar">
+            <div class="categories-widget">
+                <h3>分类</h3>
+                <ul>
+                    <% Object.keys(categories).forEach(function(category) { %>
+                        <li>
+                            <a href="<%= config.site.url %>/categories/<%= category %>">
+                                <%= category %>
+                                <span class="count">(<%= categories[category].length %>)</span>
+                            </a>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+
+            <div class="tags-widget">
+                <h3>标签云</h3>
+                <div class="tags-cloud">
+                    <% Object.keys(tags).forEach(function(tag) { %>
+                        <a href="<%= config.site.url %>/tags/<%= tag %>" class="tag">
+                            <%= tag %>
+                            <span class="count">(<%= tags[tag].length %>)</span>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <% config.social.forEach(function(item) { %>
+                    <a href="<%= item.url %>" class="social-link"><%= item.name %></a>
+                <% }); %>
+            </div>
+            <p>&copy; <%= new Date().getFullYear() %> <%= config.site.title %>. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
+    </script>
+</body>
+</html> 

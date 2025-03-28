@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="<%= config.site.language %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面未找到 - <%= config.site.title %></title>
+    <link rel="stylesheet" href="<%= config.site.url %>/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <div class="container">
+        <main>
+            <section class="error-section">
+                <h1>404 - 页面未找到</h1>
+                <p>抱歉，您访问的页面不存在。</p>
+                <div class="error-actions">
+                    <a href="<%= config.site.url %>" class="btn">返回首页</a>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div class="about-widget">
+                <h3>关于我</h3>
+                <p><%= config.site.description %></p>
+            </div>
+            <div class="social-widget">
+                <h3>社交媒体</h3>
+                <div class="social-links">
+                    <% if (config.site.social && config.site.social.github) { %>
+                        <a href="<%= config.site.social.github %>" target="_blank">GitHub</a>
+                    <% } %>
+                    <% if (config.site.social && config.site.social.twitter) { %>
+                        <a href="<%= config.site.social.twitter %>" target="_blank">Twitter</a>
+                    <% } %>
+                    <% if (config.site.social && config.site.social.email) { %>
+                        <a href="mailto:<%= config.site.social.email %>">Email</a>
+                    <% } %>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html> 

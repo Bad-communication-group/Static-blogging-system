@@ -1,0 +1,39 @@
+<%- include('header-meta') %>
+<script>
+MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+};
+</script>
+<script src="/lib/mathjax/tex-mml-chtml.js"></script>
+
+<nav class="navbar">
+    <div class="nav-brand"><%= config.site.title %></div>
+    <ul class="nav-links">
+        <% config.nav.forEach(function(item) { %>
+            <li><a href="<%= config.site.url + item.url %>" class="<%= locals.currentPath === item.url ? 'active' : '' %>"><%= item.name %></a></li>
+        <% }); %>
+    </ul>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>
+
+<script>
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+    });
+</script> 
