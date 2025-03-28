@@ -1,4 +1,4 @@
-# Verdant 使用指南
+# 使用指南
 
 ## 目录
 
@@ -15,7 +15,7 @@
 1. 确保已安装 Node.js (>= 14.0.0)
 2. 克隆项目并安装依赖：
 ```bash
-git clone https://github.com/yourusername/verdant.git
+git clone https://github.com/Lcyys666/Static-blogging-system.git
 cd verdant
 npm install
 ```
