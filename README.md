@@ -2,9 +2,10 @@
 
 一个优雅的、支持 Markdown 的静态博客系统，支持 RSS 订阅和 SEO 优化。
 
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Lcyys666&repo=Static-blogging-system)](https://github.com/Lcyys666/Static-blogging-system)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org/)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Lcyys666&repo=Static-blogging-system)](https://github.com/Lcyys666/Static-blogging-system)
 
 ## 特性
 
@@ -12,7 +13,7 @@
 - 📝 完整的 Markdown 支持：包括代码高亮、数学公式等
 - 🔍 SEO 优化：自动生成 sitemap.xml
 - 📰 RSS 订阅：支持 RSS 2.0 标准
-- 📱 响应式设计：完美适配移动设备
+- 📱 响应式设计：完美适配电脑设备
 - 🎨 多主题支持：内置多种精美主题
 - 🔍 文章搜索：支持标题、内容、分类、标签搜索
 
