@@ -30,7 +30,7 @@
 
 1. 克隆仓库：
 ```bash
-git clone https://github.com/Lcyys666/Static-blogging-system.git
+git clone https://github.com/Bad-communication-group/Static-blogging-system.git
 cd Static-blogging-system
 ```
 
