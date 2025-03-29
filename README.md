@@ -2,6 +2,8 @@
 
 一个优雅的、支持 Markdown 的静态博客系统，支持 RSS 订阅和 SEO 优化。
 
+现在本项目还在稳定更新中！
+
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Lcyys666&repo=Static-blogging-system)](https://github.com/Lcyys666/Static-blogging-system)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
