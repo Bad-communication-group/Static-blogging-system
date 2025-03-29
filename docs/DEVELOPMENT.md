@@ -31,7 +31,7 @@
 1. 克隆仓库：
 ```bash
 git clone https://github.com/Lcyys666/Static-blogging-system.git
-cd verdant
+cd Static-blogging-system
 ```
 
 2. 安装依赖：
