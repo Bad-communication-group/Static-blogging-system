@@ -25,7 +25,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/Lcyys666/Static-blogging-system.git
+git clone https://github.com/Bad-communication-group/Static-blogging-system.git
 cd Static-blogging-system
 
 # 安装依赖
