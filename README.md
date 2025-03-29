@@ -83,7 +83,7 @@ static-blogging-system/
 │   └── pages/                 # 独立页面
 │       ├── about.md          # 关于页面
 │       └── contact.md        # 联系页面
-├── public/                    # 静态资源
+├── static/                    # 静态资源
 │   ├── css/                  # 样式文件
 │   │   ├── style.css        # 主样式
 │   │   └── themes/          # 主题样式
