@@ -29,7 +29,7 @@
 
 ```bash
 git clone https://github.com/Lcyys666/Static-blogging-system.git
-cd verdant
+cd Static-blogging-system
 npm install
 ```
 
