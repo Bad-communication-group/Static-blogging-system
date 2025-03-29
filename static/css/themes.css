@@ -1,0 +1,90 @@
+/* 默认主题 - 简约现代风格 */
+.theme-default {
+    --primary-color: #333;
+    --secondary-color: #666;
+    --background-color: #fff;
+    --text-color: #333;
+    --accent-color: #00ff9d;
+    --border-color: #e0e0e0;
+    --code-color: #333;
+    --link-color: #666;
+    --hover-color: #333;
+}
+
+/* 复古主题 - 复古报纸风格 */
+.theme-vintage {
+    --primary-color: #2c1810;
+    --secondary-color: #8b4513;
+    --background-color: #f4e4bc;
+    --text-color: #2c1810;
+    --accent-color: #8b4513;
+    --border-color: #d4b895;
+    --code-color: #2c1810;
+    --link-color: #8b4513;
+    --hover-color: #2c1810;
+}
+
+/* 科技主题 - 未来科技风格 */
+.theme-tech {
+    --primary-color: #00f2ff;
+    --secondary-color: #0066ff;
+    --background-color: #0a192f;
+    --text-color: #e6f1ff;
+    --accent-color: #00f2ff;
+    --border-color: #112240;
+    --code-color: #00f2ff;
+    --link-color: #00f2ff;
+    --hover-color: #0066ff;
+}
+
+/* 极简主题 - 黑白极简风格 */
+.theme-minimal {
+    --primary-color: #000;
+    --secondary-color: #333;
+    --background-color: #fff;
+    --text-color: #000;
+    --accent-color: #000;
+    --border-color: #eee;
+    --code-color: #000;
+    --link-color: #000;
+    --hover-color: #333;
+}
+
+/* 自然主题 - 森林自然风格 */
+.theme-nature {
+    --primary-color: #2d5a27;
+    --secondary-color: #4a7856;
+    --background-color: #f4f7f4;
+    --text-color: #2d5a27;
+    --accent-color: #4a7856;
+    --border-color: #e8f0e8;
+    --code-color: #2d5a27;
+    --link-color: #4a7856;
+    --hover-color: #2d5a27;
+}
+
+/* 深色主题 */
+.theme-dark {
+    --primary-color: #fff;
+    --secondary-color: #ccc;
+    --background-color: #1a1a1a;
+    --text-color: #fff;
+    --accent-color: #00ff9d;
+    --border-color: #333;
+    --code-color: #fff;
+    --link-color: #ccc;
+    --hover-color: #fff;
+}
+
+/* 浅色主题 */
+.theme-light {
+    --primary-color: #666;
+    --secondary-color: #999;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --accent-color: #00ff9d;
+    --border-color: #ddd;
+    --code-color: #666;
+    --link-color: #666;
+    --hover-color: #333;
+} 

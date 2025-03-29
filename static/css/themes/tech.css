@@ -1,0 +1,155 @@
+/* 科技主题 - 未来科技风格 */
+body {
+    font-family: "SF Mono", "Consolas", monospace;
+    line-height: 1.6;
+    color: #e6f1ff;
+    background-color: #0a192f;
+    padding-top: 60px;
+}
+
+.navbar {
+    background-color: #112240;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+.nav-brand {
+    color: #00f2ff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #e6f1ff;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00f2ff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.post-card {
+    background: #112240;
+    padding: 2rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    border: 1px solid #00f2ff;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+}
+
+.post-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #00f2ff;
+}
+
+.post-card h3 a {
+    color: #00f2ff;
+    text-decoration: none;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #0066ff;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.post-excerpt {
+    color: #e6f1ff;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-block;
+    color: #00f2ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #0066ff;
+}
+
+.sidebar {
+    position: sticky;
+    top: 80px;
+}
+
+.sidebar > div {
+    background: #112240;
+    padding: 2rem;
+    border-radius: 4px;
+    border: 1px solid #00f2ff;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+.sidebar h3 {
+    margin-bottom: 1.5rem;
+    color: #00f2ff;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #00f2ff;
+    padding-bottom: 0.5rem;
+}
+
+footer {
+    background-color: #112240;
+    color: #e6f1ff;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid #00f2ff;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.social-link {
+    color: #e6f1ff;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #00f2ff;
+} 

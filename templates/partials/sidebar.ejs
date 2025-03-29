@@ -1,0 +1,41 @@
+<!-- 分类 -->
+<div class="widget categories">
+    <h3>分类</h3>
+    <ul>
+        <% Object.keys(categories).forEach(function(category) { %>
+            <li>
+                <a href="<%= config.site.url %>/categories/<%= category %>">
+                    <%= category %> (<%= categories[category].length %>)
+                </a>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+
+<!-- 标签云 -->
+<div class="widget tags">
+    <h3>标签</h3>
+    <div class="tag-cloud">
+        <% Object.keys(tags).forEach(function(tag) { %>
+            <a href="<%= config.site.url %>/tags/<%= tag %>" class="tag">
+                <%= tag %> (<%= tags[tag].length %>)
+            </a>
+        <% }); %>
+    </div>
+</div>
+
+<!-- 社交媒体链接 -->
+<div class="widget social">
+    <h3>关注我</h3>
+    <div class="social-links">
+        <% if (config.social) { %>
+            <% Object.entries(config.social).forEach(function([platform, url]) { %>
+                <% if (url) { %>
+                    <a href="<%= url %>" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <%= platform %>
+                    </a>
+                <% } %>
+            <% }); %>
+        <% } %>
+    </div>
+</div> 

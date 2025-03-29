@@ -6,6 +6,9 @@ const yaml = require('yaml');
 const { marked } = require('marked');
 const frontMatter = require('front-matter');
 const hljs = require('highlight.js');
+const generateRSS = require('./rss');
+const generateSitemap = require('./sitemap');
+const RSS = require('rss');
 
 const app = express();
 const port = 3000;
@@ -139,7 +142,12 @@ app.get('/', async (req, res) => {
         posts,
         categories,
         tags,
-        currentPath: '/'
+        currentPath: '/',
+        title: config.site.title,
+        description: config.site.description,
+        keywords: config.site.keywords,
+        type: 'website',
+        url: config.site.url
     });
 });
 
@@ -156,7 +164,13 @@ app.get('/posts/:slug', async (req, res) => {
         post,
         categories,
         tags,
-        currentPath: '/posts'
+        currentPath: '/posts',
+        title: post.title,
+        description: post.excerpt,
+        keywords: post.tags ? post.tags.join(', ') : '',
+        type: 'article',
+        url: `${config.site.url}/posts/${post.slug}`,
+        image: post.cover || post.thumbnail
     });
 });
 
@@ -178,7 +192,12 @@ app.get('/categories/:category', async (req, res) => {
         posts: categoryPosts,
         categories,
         tags,
-        currentPath: '/categories'
+        currentPath: '/categories',
+        title: `${category} - ${config.site.title}`,
+        description: `查看 ${category} 分类下的所有文章`,
+        keywords: category,
+        type: 'website',
+        url: `${config.site.url}/categories/${category}`
     });
 });
 
@@ -198,7 +217,12 @@ app.get('/tags/:tag', async (req, res) => {
         posts: tagPosts,
         categories,
         tags,
-        currentPath: '/tags'
+        currentPath: '/tags',
+        title: `${req.params.tag} - ${config.site.title}`,
+        description: `查看标签 ${req.params.tag} 下的所有文章`,
+        keywords: req.params.tag,
+        type: 'website',
+        url: `${config.site.url}/tags/${req.params.tag}`
     });
 });
 
@@ -214,6 +238,119 @@ app.get('/contact', (req, res) => {
         config,
         currentPath: '/contact'
     });
+});
+
+// 添加搜索路由
+app.get('/search', async (req, res) => {
+    const query = req.query.q || '';
+    const results = [];
+    
+    // 从全局变量获取文章列表
+    const { posts, categories, tags } = await loadPosts();
+    
+    // 遍历所有文章进行搜索
+    for (const post of posts) {
+        // 搜索标题
+        if (post.title.toLowerCase().includes(query.toLowerCase())) {
+            results.push(post);
+            continue;
+        }
+        
+        // 搜索内容
+        if (post.content.toLowerCase().includes(query.toLowerCase())) {
+            results.push(post);
+            continue;
+        }
+        
+        // 搜索分类
+        if (post.categories && post.categories.some(cat => 
+            cat.toLowerCase().includes(query.toLowerCase()))) {
+            results.push(post);
+            continue;
+        }
+        
+        // 搜索标签
+        if (post.tags && post.tags.some(tag => 
+            tag.toLowerCase().includes(query.toLowerCase()))) {
+            results.push(post);
+        }
+    }
+    
+    // 渲染搜索结果页面
+    res.render('search', {
+        config,
+        posts,
+        categories,
+        tags,
+        currentPath: '/search',
+        query,
+        results
+    });
+});
+
+// 添加 RSS 路由
+app.get('/rss.xml', async (req, res) => {
+    try {
+        console.log('开始处理 RSS 请求...');
+        const { posts } = await loadPosts();
+        console.log(`成功加载 ${posts.length} 篇文章`);
+        
+        if (posts.length === 0) {
+            console.log('没有找到文章，返回空 RSS');
+            const emptyFeed = new RSS({
+                title: config.site.title,
+                description: config.site.description,
+                site_url: config.site.url,
+                feed_url: `${config.site.url}/rss.xml`,
+                language: config.site.language,
+                pubDate: new Date(),
+                copyright: `© ${new Date().getFullYear()} ${config.site.author}`
+            });
+            res.set('Content-Type', 'application/xml');
+            res.send(emptyFeed.xml({ indent: true }));
+            return;
+        }
+
+        const xml = await generateRSS(posts, config);
+        console.log('RSS 生成成功，发送响应');
+        res.set('Content-Type', 'application/xml');
+        res.send(xml);
+    } catch (error) {
+        console.error('生成 RSS 失败:', error);
+        res.status(500).send(`
+            <error>
+                <message>生成 RSS 失败</message>
+                <details>${error.message}</details>
+            </error>
+        `);
+    }
+});
+
+// 添加 sitemap 路由
+app.get('/sitemap.xml', async (req, res) => {
+    try {
+        console.log('开始处理 sitemap 请求...');
+        const { posts } = await loadPosts();
+        console.log(`成功加载 ${posts.length} 篇文章`);
+        
+        const xml = await generateSitemap(posts, config);
+        console.log('sitemap 生成成功，发送响应');
+        res.set('Content-Type', 'application/xml');
+        res.send(xml);
+    } catch (error) {
+        console.error('生成 sitemap 失败:', error);
+        res.status(500).send(`
+            <error>
+                <message>生成 sitemap 失败</message>
+                <details>${error.message}</details>
+            </error>
+        `);
+    }
+});
+
+// 404 页面
+app.use((req, res) => {
+    res.status(404).render('404', { config });
 });
 
 // 启动服务器

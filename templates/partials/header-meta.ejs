@@ -1,7 +1,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="<%= locals.description || config.site.description %>">
+<meta name="keywords" content="<%= locals.keywords || config.site.keywords %>">
+<meta name="author" content="<%= config.site.author %>">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="<%= locals.title || config.site.title %>">
+<meta property="og:description" content="<%= locals.description || config.site.description %>">
+<meta property="og:type" content="<%= locals.type || 'website' %>">
+<meta property="og:url" content="<%= locals.url || config.site.url + locals.currentPath %>">
+<% if (locals.image) { %>
+<meta property="og:image" content="<%= locals.image %>">
+<% } %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= locals.title || config.site.title %>">
+<meta name="twitter:description" content="<%= locals.description || config.site.description %>">
+<% if (locals.image) { %>
+<meta name="twitter:image" content="<%= locals.image %>">
+<% } %>
+<link rel="canonical" href="<%= locals.url || config.site.url + locals.currentPath %>">
 <link rel="stylesheet" href="<%= config.site.url %>/css/style.css">
+<link rel="stylesheet" href="<%= config.site.url %>/css/themes/<%= config.site.theme %>.css">
 <link rel="stylesheet" href="/lib/highlight.js/styles.css">
+<link rel="alternate" type="application/rss+xml" title="<%= config.site.title %>" href="<%= config.site.url %>/rss.xml">
 <script src="/lib/highlight.js/highlight.min.js"></script>
 <script>
 window.MathJax = {

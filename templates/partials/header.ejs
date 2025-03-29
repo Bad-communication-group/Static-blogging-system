@@ -16,11 +16,19 @@ MathJax = {
 
 <nav class="navbar">
     <div class="nav-brand"><%= config.site.title %></div>
-    <ul class="nav-links">
-        <% config.nav.forEach(function(item) { %>
-            <li><a href="<%= config.site.url + item.url %>" class="<%= locals.currentPath === item.url ? 'active' : '' %>"><%= item.name %></a></li>
-        <% }); %>
-    </ul>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <% config.nav.forEach(function(item) { %>
+                <li><a href="<%= config.site.url + item.url %>" class="<%= locals.currentPath === item.url ? 'active' : '' %>"><%= item.name %></a></li>
+            <% }); %>
+        </ul>
+        <div class="search-container">
+            <form action="/search" method="GET" class="search-form">
+                <input type="text" name="q" placeholder="搜索文章..." class="search-input">
+                <button type="submit" class="search-button">搜索</button>
+            </form>
+        </div>
+    </div>
     <div class="burger">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -28,9 +36,157 @@ MathJax = {
     </div>
 </nav>
 
+<style>
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00ff9d;
+}
+
+.nav-links a.active {
+    color: #00ff9d;
+}
+
+.search-container {
+    margin-left: 1rem;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    width: 200px;
+}
+
+.search-button {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.search-button:hover {
+    background-color: #444;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .nav-right {
+        position: fixed;
+        right: -100%;
+        top: 60px;
+        height: calc(100vh - 60px);
+        background-color: #333;
+        flex-direction: column;
+        width: 100%;
+        padding: 2rem;
+        transition: right 0.3s ease;
+    }
+
+    .nav-right.nav-active {
+        right: 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .search-container {
+        margin: 1rem 0;
+        width: 100%;
+    }
+    
+    .search-form {
+        width: 100%;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .burger.toggle div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.toggle div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.toggle div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
+</style>
+
 <script>
     const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
+    const nav = document.querySelector('.nav-right');
     
     burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');

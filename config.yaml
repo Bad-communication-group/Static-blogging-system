@@ -1,11 +1,14 @@
 site:
-  title: "我的博客"
-  description: "这是一个使用 Node.js 构建的静态博客"
-  author: "博主"
-  language: "zh-CN"
+  title: "Static-blogging-system"
+  subtitle: "一个优雅的静态博客系统"
   url: "http://localhost:3000"
-  social:
-    github: "https://github.com/yourusername"
+  author: "Your Name"
+  email: "your.email@example.com"
+  description: "一个基于 Node.js 的静态博客系统，支持 Markdown 和 LaTeX"
+  keywords: "blog, static-site, markdown, node, express, ejs"
+  language: "zh-CN"
+  timezone: "Asia/Shanghai"
+  theme: "default"  # 可选主题: default(简约现代), vintage(复古), tech(科技), minimal(极简), nature(自然)
 
 nav:
   - name: "首页"
@@ -16,5 +19,6 @@ nav:
     url: "/contact"
 
 social:
-  - name: GitHub
-    url: https://github.com/yourusername
+  github: "https://github.com/yourusername"
+  twitter: "https://twitter.com/yourusername"
+  email: "your.email@example.com"

@@ -1,0 +1,135 @@
+/* 极简主题 - 黑白极简风格 */
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: #000;
+    background-color: #fff;
+    padding-top: 60px;
+}
+
+.navbar {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-brand {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.nav-links a:hover {
+    color: #333;
+}
+
+.post-card {
+    background: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.post-card:last-child {
+    border-bottom: none;
+}
+
+.post-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.post-card h3 a {
+    color: #000;
+    text-decoration: none;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.post-excerpt {
+    color: #333;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #333;
+}
+
+.sidebar {
+    position: sticky;
+    top: 80px;
+}
+
+.sidebar > div {
+    background: #fff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar h3 {
+    margin-bottom: 1.5rem;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+footer {
+    background-color: #fff;
+    color: #333;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 1px solid #eee;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.social-link {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #333;
+} 

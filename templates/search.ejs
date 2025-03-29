@@ -1,0 +1,37 @@
+<%- include('partials/header') %>
+
+<main class="container">
+    <div class="content">
+        <h1>搜索结果: <%= query %></h1>
+        
+        <% if (results.length > 0) { %>
+            <% results.forEach(function(post) { %>
+                <article class="post-card">
+                    <h3><a href="<%= config.site.url %>/posts/<%= post.slug %>"><%= post.title %></a></h3>
+                    <div class="post-meta">
+                        <span>作者: <%= post.author %></span>
+                        <span>发布于: <%= post.date %></span>
+                        <% if (post.categories && post.categories.length > 0) { %>
+                            <span>分类: <%= post.categories.join(', ') %></span>
+                        <% } %>
+                    </div>
+                    <div class="post-excerpt">
+                        <%= post.excerpt %>
+                    </div>
+                    <a href="<%= config.site.url %>/posts/<%= post.slug %>" class="read-more">阅读更多</a>
+                </article>
+            <% }); %>
+        <% } else { %>
+            <div class="no-results">
+                <p>没有找到相关文章。</p>
+                <p>请尝试其他关键词。</p>
+            </div>
+        <% } %>
+    </div>
+    
+    <aside class="sidebar">
+        <%- include('partials/sidebar') %>
+    </aside>
+</main>
+
+<%- include('partials/footer') %> 
